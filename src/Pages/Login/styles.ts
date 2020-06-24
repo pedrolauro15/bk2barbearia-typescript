@@ -2,81 +2,148 @@ import { shade } from "polished";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  min-width: 375px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 32px;
+  padding: 164px;
+  max-height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    overflow: scroll;
+  }
 `;
 
-export const Box = styled.div`
-  padding: 32px 64px;
-  min-width: 375px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px #888888aa;
+export const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > img {
+    width: 350px;
+    margin-bottom: 64px;
+  }
+
   > form {
     display: flex;
     flex-direction: column;
+    margin-top: 32px;
   }
+
+  > form > input {
+    padding: 16px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin-bottom: 16px;
+    font-size: 18px;
+
+    ::placeholder {
+      font-size: 18px;
+    }
+  }
+
+  > form > button {
+    background-color: var(--primary);
+    border-radius: 8px;
+    color: #fff;
+    max-width: 400px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    &:hover {
+      background-color: ${shade(0.25, "#DD4455")};
+    }
+
+    &:active {
+      background-color: ${shade(0.15, "#DD4455")};
+    }
+  }
+
+  @media (max-width: 768px) {
+    > h1 {
+      margin-left: 16px;
+    }
+
+    > img {
+      margin-bottom: 16px;
+    }
+
+    > form {
+      width: 100%;
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    form > input,
+    button {
+      width: 100%;
+    }
+  }
+`;
+
+export const RightContainer = styled.div`
+  display: flex;
 
   > img {
-    width: 300px;
+    width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
-export const FormControl = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  margin-bottom: 12px;
+export const PlayStoreButton = styled.button`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    background-color: #222;
+    height: 75px;
+    padding: 16px 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s;
 
-  > svg {
-    position: absolute;
-    font-size: 28px;
-    margin-left: 10px;
-    color: #999;
-  }
-`;
+    > span {
+      color: #fff;
+      font-weight: bold;
+    }
 
-export const Input = styled.input`
-  border: 1px solid #cccccc;
-  width: 100%;
-  padding: 20px 37px;
-  border-radius: 8px;
-  transition: all 0.3s;
-  font-size: 16px;
+    > section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 12px;
+    }
 
-  ::placeholder {
-    color: #aaaaaa;
-    font-size: 16px;
-  }
+    > section > span {
+      color: #fff;
+      margin-bottom: 2px;
+      font-size: 16px;
+      font-weight: 500;
+    }
 
-  &:hover,
-  &:focus {
-    border: 2px solid #000;
-    padding: 19px 38px;
-  }
-`;
+    > section > h6 {
+      color: #fff;
+      text-transform: capitalize;
+      font-size: 24px;
+    }
 
-export const Button = styled.button`
-  padding: 12px 32px;
-  background-color: var(--primary);
-  border-radius: 8px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-  align-self: flex-end;
-  cursor: pointer;
-  transition: all 0.2s;
+    > img {
+      height: 100%;
+    }
 
-  &:hover {
-    background-color: ${shade(0.2, "#DD4455")};
-  }
-
-  @media (max-width: 425px) {
-    width: 100%;
+    &:active {
+      background: #444;
+    }
   }
 `;

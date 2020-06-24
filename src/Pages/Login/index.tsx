@@ -1,32 +1,58 @@
-import React, { FormEvent } from "react";
-import { MdLockOutline, MdPersonOutline } from "react-icons/md";
+import React from "react";
+import { Form } from "@unform/web";
 import logo from "../../assets/logo_preta.png";
-import { Box, Button, Container, FormControl, Input } from "./styles";
-import { useHistory } from 'react-router-dom';
+import backgroundImageAsset from "../../assets/svg/login-background.svg";
+import googlePlayAsset from "../../assets/svg/google-play.svg";
+import {
+  Container,
+  LeftContainer,
+  RightContainer,
+  PlayStoreButton,
+} from "./styles";
+import Input from "../../components/Form/Input";
+import { useHistory } from "react-router-dom";
+
+export interface Data {
+  usuario: string;
+  senha: string;
+}
 
 const Login: React.FC = () => {
   const { push } = useHistory();
-  const handleLogin = (event: FormEvent) => {
-    event.preventDefault();
-    push('/perfil');
-  }
+
+  const handleSubmit = (data: Data) => {
+    console.log(data);
+    push("/perfil");
+  };
 
   return (
     <Container>
-      <Box>
+      <LeftContainer>
         <img src={logo} alt="logo" />
-        <form onSubmit={handleLogin}>
-          <FormControl>
-            <MdPersonOutline />
-            <Input required placeholder="Usuário" />
-          </FormControl>
-          <FormControl>
-            <MdLockOutline />
-            <Input required placeholder="Senha" type="password" />
-          </FormControl>
-          <Button type="submit">Entrar</Button>
-        </form>
-      </Box>
+        <h1>Faça seu login</h1>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            name="usuario"
+            placeholder="Usuário"
+            required
+            autoComplete="off"
+          />
+          <Input name="senha" placeholder="Senha" type="password" required />
+          <button type="submit">Entrar</button>
+        </Form>
+      </LeftContainer>
+      <RightContainer>
+        <img src={backgroundImageAsset} alt="barbeiro" />
+      </RightContainer>
+      <a href="https://play.google.com/store/apps/details?id=com.BK2.Bk2Barbearia">
+        <PlayStoreButton>
+          <img src={googlePlayAsset} alt="play store" />
+          <section>
+            <span>BAIXE NA</span>
+            <h6>Google Play</h6>
+          </section>
+        </PlayStoreButton>
+      </a>
     </Container>
   );
 };

@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   :root {
     --primary: #DD4455;
-    --background: #F5F5F5;
+    --background: #F0F0F0;
   }
 
   *{
@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif !important;
+    text-decoration: none;
   }
   
   *, button, input {
