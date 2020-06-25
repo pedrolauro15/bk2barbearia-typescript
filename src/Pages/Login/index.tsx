@@ -1,11 +1,16 @@
 import { Form } from "@unform/web";
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext } from "react";
 import logo from "../../assets/logo_preta.png";
 import googlePlayAsset from "../../assets/svg/Google Play.svg";
 import backgroundImageAsset from "../../assets/svg/login-background.svg";
 import Input from "../../components/Form/Input";
-import { Container, LeftContainer, PlayStoreButton, RightContainer } from "./styles";
+import {
+  Container,
+  LeftContainer,
+  PlayStoreButton,
+  RightContainer,
+} from "./styles";
+import AuthContext from "../../contexts/authContext";
 
 export interface Data {
   usuario: string;
@@ -13,11 +18,15 @@ export interface Data {
 }
 
 const Login: React.FC = () => {
-  const { push } = useHistory();
+  const { signIn } = useContext(AuthContext);
 
-  const handleSubmit = (data: Data) => {
-    console.log(data);
-    push("/perfil");
+  const handleSubmit = async (data: Data) => {
+    try {
+     await signIn(data.usuario, data.senha);
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
   };
 
   return (
