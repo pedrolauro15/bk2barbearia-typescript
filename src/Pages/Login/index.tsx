@@ -31,6 +31,7 @@ const Login: React.FC = () => {
             placeholder="Usuário"
             required
             autoComplete="off"
+            autoFocus
           />
           <Input name="senha" placeholder="Senha" type="password" required />
           <button type="submit">Entrar</button>
