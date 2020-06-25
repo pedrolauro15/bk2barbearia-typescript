@@ -1,16 +1,11 @@
-import React from "react";
 import { Form } from "@unform/web";
-import logo from "../../assets/logo_preta.png";
-import backgroundImageAsset from "../../assets/svg/login-background.svg";
-import googlePlayAsset from "../../assets/svg/google-play.svg";
-import {
-  Container,
-  LeftContainer,
-  RightContainer,
-  PlayStoreButton,
-} from "./styles";
-import Input from "../../components/Form/Input";
+import React from "react";
 import { useHistory } from "react-router-dom";
+import logo from "../../assets/logo_preta.png";
+import googlePlayAsset from "../../assets/svg/Google Play.svg";
+import backgroundImageAsset from "../../assets/svg/login-background.svg";
+import Input from "../../components/Form/Input";
+import { Container, LeftContainer, PlayStoreButton, RightContainer } from "./styles";
 
 export interface Data {
   usuario: string;
@@ -47,10 +42,6 @@ const Login: React.FC = () => {
       <a href="https://play.google.com/store/apps/details?id=com.BK2.Bk2Barbearia">
         <PlayStoreButton>
           <img src={googlePlayAsset} alt="play store" />
-          <section>
-            <span>BAIXE NA</span>
-            <h6>Google Play</h6>
-          </section>
         </PlayStoreButton>
       </a>
     </Container>

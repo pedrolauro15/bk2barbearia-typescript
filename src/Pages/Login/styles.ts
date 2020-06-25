@@ -103,47 +103,18 @@ export const RightContainer = styled.div`
 
 export const PlayStoreButton = styled.button`
   display: none;
+  background: none;
   @media (max-width: 768px) {
-    display: flex;
-    background-color: #222;
-    height: 75px;
-    padding: 16px 32px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
     transition: all 0.3s;
+    display: block;
+    margin: 0 auto;
 
-    > span {
-      color: #fff;
-      font-weight: bold;
-    }
-
-    > section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-left: 12px;
-    }
-
-    > section > span {
-      color: #fff;
-      margin-bottom: 2px;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    > section > h6 {
-      color: #fff;
-      text-transform: capitalize;
-      font-size: 24px;
-    }
-
-    > img {
-      height: 100%;
-    }
+   > img {
+    width: 60%;
+   }
 
     &:active {
-      background: #444;
+      opacity: 0.5;
     }
   }
 `;
