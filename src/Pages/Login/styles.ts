@@ -93,7 +93,7 @@ export const RightContainer = styled.div`
   display: flex;
 
   > img {
-    width: 90%;
+    width: 80%;
   }
 
   @media (max-width: 768px) {
