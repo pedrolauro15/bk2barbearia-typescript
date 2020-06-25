@@ -1,5 +1,7 @@
 import { Form } from "@unform/web";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import { RingLoader } from "react-spinners";
 import logo from "../../assets/logo_preta.png";
 import googlePlayAsset from "../../assets/svg/Google Play.svg";
 import backgroundImageAsset from "../../assets/svg/login-background.svg";
@@ -19,14 +21,25 @@ export interface Data {
 
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (data: Data) => {
     try {
-     await signIn(data.usuario, data.senha);
+      setLoading(true);
+      await signIn(data.usuario, data.senha);
     } catch (error) {
-      alert(error);
-      console.log(error);
+      const err = { error }; 
+      toast.error(err.error.response.data.error, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }
+    setLoading(false);
   };
 
   return (
@@ -43,7 +56,9 @@ const Login: React.FC = () => {
             autoFocus
           />
           <Input name="senha" placeholder="Senha" type="password" required />
-          <button type="submit">Entrar</button>
+          <button disabled={loading} type="submit">
+            {loading ? <RingLoader size={30} color="#FFF" /> : "Entrar"}
+          </button>
         </Form>
       </LeftContainer>
       <RightContainer>
@@ -54,6 +69,7 @@ const Login: React.FC = () => {
           <img src={googlePlayAsset} alt="play store" />
         </PlayStoreButton>
       </a>
+      <ToastContainer />
     </Container>
   );
 };

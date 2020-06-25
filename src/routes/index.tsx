@@ -1,22 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LoginPage from '../Pages/Login';
-import ProfilePage from '../Pages/Profile';
+import React, { useContext } from "react";
+import AuthContext from "../contexts/authContext";
+import UserRoutes from "./user.routes";
+import AuthRoutes from "./auth.routes";
 
 const Routes: React.FC = () => {
-	return (
-		<Router>
-			<Route
-				path="/"
-				exact
-				component={LoginPage}
-			/>
-			<Route
-				path="/perfil"
-				component={ProfilePage}
-			/>
-		</Router>
-	)
-}
+  const { signed } = useContext(AuthContext);
+  if (signed) {
+    return <UserRoutes />;
+  }
+
+  return <AuthRoutes />;
+};
 
 export default Routes;

@@ -65,9 +65,13 @@ export const LeftContainer = styled.div`
 		max-width: 400px;
 		font-size: 18px;
 		font-weight: bold;
-		padding: 16px;
+    height: 50px;
+		padding:  0 16px;
 		cursor: pointer;
 		transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 		&:hover {
 			background-color: ${shade(0.25, '#DD4455')};
@@ -76,6 +80,10 @@ export const LeftContainer = styled.div`
 		&:active {
 			background-color: ${shade(0.15, '#DD4455')};
 		}
+
+    &:disabled {
+      background-color: ${shade(0.4, '#DD4455')};
+    }
 	}
 
 	@media (max-width: 768px) {

@@ -3,7 +3,7 @@ import { Container } from './styles';
 
 export interface Props {
   title?: string;
-  headerRight?: HTMLElement; 
+  headerRight?: React.FC; 
 }
 
 const Header: React.FC<Props> = ({ title, headerRight }) => {
