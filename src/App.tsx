@@ -1,7 +1,7 @@
 import React from "react";
 import Routes from "./routes";
 import { GlobalStyle } from "./styles/global";
-import { AuthProvider } from "./contexts/authContext"; //first commit
+import { AuthProvider } from "./contexts/authContext"; //first commit Pedrolauro
 
 function App() {
   return (
