@@ -5,11 +5,7 @@ import UserRoutes from './user.routes';
 
 const Routes: React.FC = () => {
 	const { signed } = useContext(AuthContext);
-	if (signed) {
-		return <UserRoutes />;
-	} else {
-		return <AuthRoutes />;
-	}
+  return signed ? <UserRoutes /> : <AuthRoutes />;
 };
 
 export default Routes;
