@@ -8,6 +8,7 @@ import backgroundImageAsset from '../../assets/svg/login-background.svg';
 import Input from '../../components/Form/Input';
 import AuthContext from '../../contexts/authContext';
 import { Container, LeftContainer, PlayStoreButton, RightContainer } from './styles';
+//Criando Branch
 
 export interface Data {
 	usuario: string;
