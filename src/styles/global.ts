@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Muli', sans-serif !important;
     text-decoration: none;
+    list-style: none;
   }
   
   *, button, input {

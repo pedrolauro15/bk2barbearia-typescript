@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Header from "../../components/Header";
 import AuthContext from "../../contexts/authContext";
 import profilePhoto from "../../assets/svg/person.svg";
@@ -11,10 +11,31 @@ import {
   CardContainer,
   UserInfo,
 } from "./styles";
+import Cartao from "./components/Cartao";
+import { Cartao as CartaoFidelidade } from "../../@types/carimbo";
+import api from "../../services/api";
 
 const Profile: React.FC = () => {
-  const { signOut, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const date = parseISO(String(user?.dados.data));
+  const [card, setCard] = useState<CartaoFidelidade>([]);
+
+  const loadCardData = async () => {
+    try {
+      const response = await api.get(`carimbos?id=${user?.dados.id}`, {
+        headers: {
+          authorization: user?.dados.token,
+        },
+      });
+      setCard(response.data);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  useEffect(() => {
+    loadCardData();
+  }, []);
 
   return (
     <Container>
@@ -56,7 +77,9 @@ const Profile: React.FC = () => {
             </div>
           </UserInfo>
         </ProfileContainer>
-        <CardContainer></CardContainer>
+        <CardContainer>
+          <Cartao data={card} />
+        </CardContainer>
       </InfoConteiner>
     </Container>
   );

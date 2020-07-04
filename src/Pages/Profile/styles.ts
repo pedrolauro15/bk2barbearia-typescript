@@ -4,6 +4,7 @@ export const Container = styled.div``;
 
 export const InfoConteiner = styled.div`
   display: flex;
+  justify-content: space-between;
   padding: 32px;
 `;
 
@@ -12,8 +13,9 @@ export const ProfileContainer = styled.section`
   background-color: #fff;
   border-radius: 8px;
   padding: 32px;
+  height: 100%;
   box-shadow: 0 0 10px #00000066;
-  max-width: 50%;
+  width: 49%;
 
   > img {
     width: 180px;
@@ -64,5 +66,13 @@ export const UserInfo = styled.div`
 `;
 
 export const CardContainer = styled.section`
-  background-color: blue;
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  height: 100%;
+  align-items: center;
+  justify-content: center; 
+
+  box-shadow: 0 0 10px #00000066;
+  width: 49%;
 `;

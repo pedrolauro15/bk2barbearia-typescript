@@ -1,5 +1,6 @@
 import { Form } from '@unform/web';
-import React, { useContext, useState } from 'react';
+import { FormHandles } from '@unform/core';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { RingLoader } from 'react-spinners';
 import { toast, ToastContainer } from 'react-toastify';
 import logo from '../../assets/logo_preta.png';
@@ -17,11 +18,21 @@ export interface Data {
 const Login: React.FC = () => {
 	const { signIn } = useContext(AuthContext);
 	const [loading, setLoading] = useState(false);
+	const formRef = useRef<FormHandles>(null);
+
+	useEffect(() => {
+		const userData = localStorage.getItem('@bk2barbearia_user_data');
+		if(userData){
+			const data = JSON.parse(userData);
+			formRef.current?.setData(data);
+		}
+	}, [])
 
 	const handleSubmit = async (data: Data) => {
 		try {
 			setLoading(true);
 			await signIn(data.usuario, data.senha);
+			localStorage.setItem('@bk2barbearia_user_data', JSON.stringify(data));
 		} catch (error) {
 			const err = { error };
 			toast.error(err.error.response.data.error, {
@@ -42,7 +53,7 @@ const Login: React.FC = () => {
 			<LeftContainer>
 				<img src={logo} alt="logo" />
 				<h1>Faça seu login</h1>
-				<Form onSubmit={handleSubmit}>
+				<Form ref={formRef} onSubmit={handleSubmit}>
 					<Input
 						name="usuario"
 						placeholder="Usuário"

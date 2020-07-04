@@ -9,7 +9,27 @@ export const Container = styled.header`
   font-size: 24px;
   font-weight: bold;
 
-  >div {
+  > div {
     color: #FFF;
+  }
+
+  > ul {
+    display: flex;
+    > li {
+      color: #FFF;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      > svg {
+        font-size: 20px;
+        margin-left: 4px;
+      }
+
+      &:hover {
+        color: #DDD;
+      }
+    }
   }
 `;
