@@ -7,7 +7,7 @@ export const Container = styled.header`
   background-color: #333;
   padding: 24px;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: bold;
 
   >div {
     color: #FFF;

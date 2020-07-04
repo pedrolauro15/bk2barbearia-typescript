@@ -4,13 +4,15 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --primary: #DD4455;
     --background: #F0F0F0;
+    --title: #000000AA;
+    --subtitle: #0000008A;
   }
 
   *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Muli', sans-serif !important;
     text-decoration: none;
   }
   

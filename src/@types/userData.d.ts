@@ -1,12 +1,10 @@
 export interface User {
   dados: {
     token: string;
-    idcliente: number;
+    id: number;
     nome: string;
     apelido: string;
-    dia: number;
-    mes: number;
-    ano: number;
+    data: Date;
   };
   contato?: {
     contato: string;
@@ -14,7 +12,5 @@ export interface User {
   indicacao: {
     indicados: number;
   };
-  ranking: {
-    ranking: string;
-  };
+  ranking: string;
 }
